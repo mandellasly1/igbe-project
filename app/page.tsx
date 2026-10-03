@@ -65,7 +65,7 @@ export default function Home() {
                 Founder of Waters of Heaven Temple
               </h3>
 
-              <h4 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h4 className="text-2xl font-semibold text-blue-600 mb-4">
                 Kate Onobriakpeyan
               </h4>
 
@@ -73,7 +73,7 @@ export default function Home() {
                 Also known as:
               </p>
 
-              <ul className="list-disc list-inside space-y-2 text-gray-800">
+              <ul className="list-disc list-inside space-y-2 text-blue-700">
                 <li>Omocherighorami</li>
                 <li>Queen Shine Shine</li>
                 <li>White Queen</li>
@@ -92,7 +92,7 @@ export default function Home() {
                 Titles & Origin
               </h3>
 
-              <div className="space-y-5 text-gray-800">
+              <div className="space-y-5 text-blue-800">
 
                 {/* Title / Rank */}
                 <div>
