@@ -705,6 +705,7 @@ export default function CommunitiesPage() {
                   worship and religious identity.
                 </p>
 
+
                 <p className="mt-4 leading-8">
                   The image shown here is included as part of the website's
                   effort to preserve visual records of Igbe heritage.

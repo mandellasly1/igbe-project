@@ -27,6 +27,7 @@ export async function GET(
   } catch (error) {
     console.error("Failed to fetch event:", error);
 
+    
     return NextResponse.json(
       { error: "Invalid event ID" },
       { status: 400 }

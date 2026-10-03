@@ -2,7 +2,7 @@ import EventBlocks from "@/components/EventBlocks";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-igbe-white p-10">
+    <main className="min-h-screen bg-igbe-pink p-10">
 
       {/* Hero Section */}
       <section
@@ -10,11 +10,12 @@ export default function Home() {
         style={{ backgroundImage: "url('/hero-banner.jpg')" }}
       >
         <div className="relative z-10">
-          <h1 className="text-5xl font-extrabold mb-4">
+          <h1 className="text-3xl font-extrabold mb-4">
             Dancing & Connecting With Our Ancestors
           </h1>
 
-          <p className="text-xl max-w-2xl mx-auto">
+
+          <p className="text-xl max-w-3xl mx-auto">
             Preserving Tradition 🐚 Finding Our Origin 🐚 Connecting Communities
           </p>
 
