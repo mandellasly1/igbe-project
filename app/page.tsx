@@ -10,12 +10,12 @@ export default function Home() {
         style={{ backgroundImage: "url('/hero-banner.jpg')" }}
       >
         <div className="relative z-10">
-          <h1 className="text-3xl font-extrabold mb-4">
+          <h1 className="text-3xl font-extrabold text-igbe-yellow mb-4">
             Dancing & Connecting With Our Ancestors
           </h1>
 
 
-          <p className="text-xl max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl text-igbe-yellow mx-auto">
             Preserving Tradition 🐚 Finding Our Origin 🐚 Connecting Communities
           </p>
 
@@ -124,7 +124,7 @@ export default function Home() {
                   </p>
 
                   <p>
-                    2018
+                    2013
                   </p>
                 </div>
 
