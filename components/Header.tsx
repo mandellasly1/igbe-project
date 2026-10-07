@@ -13,6 +13,7 @@ export default function Header() {
             width={120}
             height={120}
             className="rounded-full object-cover border-4 border-yellow-500"
+            loading="eager"
            />
 
            {/* Site name in gold */}
