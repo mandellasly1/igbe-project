@@ -1,5 +1,6 @@
 import EventBlocks from "@/components/EventBlocks";
 import { Alike_Angular } from "next/font/google";
+import UpcomingNews from "@/components/UpcomingNews";
 
 
 export default function Home() {
@@ -307,7 +308,7 @@ export default function Home() {
           Latest Articles & News
         </h2>
 
-        
+        <UpcomingNews />
 
         <p className="text-lg text-gray-700 mb-4">
           Stay updated with teachings, community stories, and cultural insights.
