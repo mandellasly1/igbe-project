@@ -8,6 +8,7 @@ type AboutData = {
   subtitle?: unknown;
   intro?: unknown;
 
+  
   founder?: {
     name?: unknown;
     image?: unknown;
