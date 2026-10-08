@@ -91,7 +91,7 @@ Administrators will have tools to:
 
 
 
----
+
 
 ## 🛍️ Mama White Spiritual
 
@@ -167,7 +167,7 @@ The support section may provide:
 
 **Temple donations and support will remain separate from purchases made through Mama White Spiritual.**
 
----
+
 
 ---
 
