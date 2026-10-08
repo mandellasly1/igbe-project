@@ -8,6 +8,7 @@ export async function GET() {
 
     const about = await db.collection("about").findOne({ page: "about" });
 
+    
     if (!about) {
       return NextResponse.json(
         { error: "About page content not found" },
