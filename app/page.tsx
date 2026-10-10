@@ -18,10 +18,6 @@ export default function Home() {
           </h1>
 
 
-          <p className="text-xl max-w-3xl text-igbe-yellow mx-auto">
-            Preserving Tradition 🐚 Finding Our Origin 🐚 Connecting Communities
-          </p>
-
           <div className="mt-8">
             <a
               href="/communities"
@@ -33,15 +29,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Welcome Heading */}
-      <h1 className="text-4xl font-bold text-center mb-10">
+    {/* Welcome Heading */}
+      {/* <h1 className="text-4xl font-bold text-center mb-10">
         <span className="text-igbe-red">Welcome</span>{" "}
         <span className="text-igbe-yellow">to</span>{" "}
         <span className="text-igbe-blue">Waters</span>{" "}
         <span className="text-igbe-yellow">of</span>{" "}
         <span className="text-igbe-red">Heaven</span>{" "}
         <span className="text-igbe-blue">Temple</span>
-      </h1>
+      </h1>*/}
+
+    
+<div className="flex flex-col items-center text-center">
+  {/* Welcome Heading */}
+  <h1 className="mb-4 text-center text-4xl font-bold text-igbe-red">
+    Welcome to Waters of Heaven Temple
+  </h1>
+
+  {/* Subtitle */}
+  <p className="mx-auto max-w-3xl text-center text-xl text-igbe-blue">
+    Preserving Tradition 🐚 Finding Our Origin 🐚 Connecting Communities
+  </p>
+</div>
+
+
 
       {/* About / Our Origin Section */}
       <section className="py-16 text-center">
