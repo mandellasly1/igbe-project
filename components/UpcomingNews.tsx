@@ -38,7 +38,7 @@ export default function UpcomingNews() {
                 Upcoming Event
               </span>
 
-              <span className="rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
+              <span className="rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-600">
                 Waters of Heaven Temple
               </span>
             </div>
@@ -69,6 +69,7 @@ export default function UpcomingNews() {
                 shared here.
               </p>
             </div>
+
 
             {/* Coming Soon */}
             <div className="mt-8 rounded-2xl border border-igbe-gold bg-yellow-50 p-6">
