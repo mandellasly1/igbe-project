@@ -669,75 +669,78 @@ export default function AboutPage() {
 
 
 
-      {/* ================================================= */}
-      {/* VIDEOS */}
-      {/* ================================================= */}
+      
+        {/* ================================================= */}
+        {/* VIDEOS */}
+        {/* ================================================= */}
 
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="text-sm uppercase tracking-[0.3em] font-bold text-igbe-blue mb-3">
-              Visual Heritage
-            </p>
+        <section className="bg-gray-50 py-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <p className="text-sm uppercase tracking-[0.3em] font-bold text-igbe-blue mb-3">
+                Visual Heritage
+              </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-igbe-purple">
-              Our Experiences in Motion
-            </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-igbe-purple">
+                Our Experiences in Motion
+              </h2>
 
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-5">
-              These spaces are reserved for videos that document our
-              dancing, songs, spiritual experiences, ancestral reflection,
-              and community life.
-            </p>
-          </div>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-5">
+                These videos document our dancing, songs, spiritual experiences,
+                ancestral reflection, and community life.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videos.map((video, index) => {
-              const videoObject =
-                video && typeof video === "object"
-                  ? (video as Record<string, unknown>)
-                  : {};
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {videos.map((video, index) => {
+                const videoObject =
+                  video && typeof video === "object"
+                    ? (video as Record<string, unknown>)
+                    : {};
 
-              const videoUrl = getText(videoObject.url);
+                // MongoDB stores the video path in the "video" field.
+                const videoUrl = getText(videoObject.video);
 
-              return (
-                <article
-                  key={index}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg border-t-8 border-igbe-blue"
-                >
-                  <div className="aspect-video bg-black">
-                    {videoUrl ? (
-                      <video
-                        controls
-                        preload="metadata"
-                        className="w-full h-full object-cover"
-                      >
-                        <source src={videoUrl} type="video/mp4" />
-
-                        Your browser does not support the video element.
-                      </video>
-                    ) : (
-                      <div className="h-full flex items-center justify-center text-white">
-                        Video coming soon
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-igbe-blue mb-3">
-                      <DisplayValue value={videoObject.title} />
-                    </h3>
-
-                    <div className="text-gray-600 leading-relaxed">
-                      <DisplayValue value={videoObject.description} />
+                return (
+                  <article
+                    key={getText(videoObject.number) || index}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg border-t-8 border-igbe-blue"
+                  >
+                    <div className="aspect-video bg-black">
+                      {videoUrl ? (
+                        <video
+                          controls
+                          preload="metadata"
+                          playsInline
+                          className="w-full h-full object-cover"
+                        >
+                          <source src={videoUrl} type="video/mp4" />
+                          Your browser does not support the video element.
+                        </video>
+                      ) : (
+                        <div className="h-full flex items-center justify-center text-white">
+                          Video coming soon
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </article>
-              );
-            })}
+
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-igbe-blue mb-3">
+                        <DisplayValue value={videoObject.title} />
+                      </h3>
+
+                      <div className="text-gray-600 leading-relaxed">
+                        <DisplayValue value={videoObject.description} />
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+
 
       {/* ================================================= */}
       {/* LIVING HERITAGE */}
