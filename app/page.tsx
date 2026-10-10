@@ -292,14 +292,13 @@ export default function Home() {
       </button>
 
 
-      {/* Temple Events */}
-      <h2 className="mt-10 w-full bg-igbe-purple text-center text-igbe-white py-3 text-4xl font-extrabold tracking-wide shadow-md">
-        Temple Events
-      </h2>
+                {/* Temple Events */}
+          <h2 className="mt-10 w-full bg-igbe-purple px-4 py-3 text-center text-2xl font-extrabold tracking-wide text-igbe-white shadow-md sm:text-3xl md:text-4xl">
+            Temple Events
+          </h2>
 
-      {/* Dynamic Event Blocks */}
-      <EventBlocks />
-
+          {/* Dynamic Event Blocks */}
+          <EventBlocks />
 
       {/* News & Articles */}
       <section className="py-16 px-6 text-center">
