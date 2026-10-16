@@ -2,382 +2,236 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import type { ReactNode } from "react";
-
-/* =========================================================
-   WHATSAPP CONFIGURATION
-========================================================= */
 
 const WHATSAPP_NUMBER = "2348169117532";
 
-function getWhatsAppLink(message: string) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    message
-  )}`;
-}
-
-/* =========================================================
-   TYPES
-========================================================= */
+const SHOP_LOCATION =
+  "Swali Market Road Junction, Yenagoa, Bayelsa State, Nigeria";
 
 type Product = {
   name: string;
   description: string;
   price: number | null;
-  image?: string;
+  image: string;
 };
 
-type ProductCategory = {
+type Category = {
   name: string;
   description: string;
   products: Product[];
 };
 
-/* =========================================================
-   WHATSAPP BUTTON
-========================================================= */
-
-function WhatsAppButton({
-  message,
-  children,
-  className = "",
-}: {
-  message: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <a
-      href={getWhatsAppLink(message)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-5 py-3 text-center font-bold text-white shadow-sm transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${className}`}
-    >
-      <span aria-hidden="true" className="text-xl">
-        ☎
-      </span>
-
-      {children}
-    </a>
-  );
-}
-
-/* =========================================================
-   PRODUCT CATEGORIES
-========================================================= */
-
-const productCategories: ProductCategory[] = [
-  /* -------------------------------------------------------
-     1. OILS AND PERFUMES
-  ------------------------------------------------------- */
-
+const categories: Category[] = [
   {
     name: "Oils & Perfumes",
-
     description:
-      "Explore our traditional and spiritual oils and perfumes. Contact us for prices and availability.",
-
+      "Explore our collection of traditional perfumes, fragrances, and spiritual oils.",
     products: [
       {
         name: "St. Michael Perfume",
-        description:
-          "A spiritual perfume available for customer enquiries.",
-
+        description: "Traditional spiritual perfume.",
         price: null,
         image: "/products/st-michael-perfume.jpg",
       },
-
       {
         name: "Love Perfume",
-        description:
-          "A spiritual perfume. Contact us for product details and availability.",
-
+        description: "Traditional fragrance product.",
         price: null,
         image: "/products/love-perfume.jpg",
       },
-
       {
         name: "Back to Sender Perfume",
-        description:
-          "A spiritual perfume available for customer enquiries.",
-
+        description: "Traditional spiritual perfume.",
         price: null,
         image: "/products/back-to-sender-perfume.jpg",
       },
-
       {
         name: "Other Spiritual Perfumes",
-        description:
-          "Ask us about other spiritual perfumes available in our shop.",
-
+        description: "Ask about our available perfume varieties.",
         price: null,
         image: "/products/other-spiritual-perfumes.jpg",
       },
-
       {
         name: "Spiritual Oils",
-        description:
-          "Contact us to enquire about our available spiritual oils.",
-
+        description: "Enquire about our available traditional oils.",
         price: null,
         image: "/products/spiritual-oils.jpg",
       },
     ],
   },
-
-  /* -------------------------------------------------------
-     2. SPIRITUAL POWDERS
-  ------------------------------------------------------- */
-
   {
     name: "Spiritual Powders",
-
     description:
-      "Browse Native Chalk and other traditional powders. Different sizes are listed separately.",
-
+      "Discover traditional chalks and powders in different varieties and sizes.",
     products: [
       {
-        name: "Native Chalk — Large",
-        description:
-          "Large Native Chalk. Contact us to confirm price and availability.",
-
-        price: null,
-        image: "/products/native-chalk-large.jpg",
-      },
-
-      {
         name: "Native Chalk — Small",
-        description:
-          "Small Native Chalk. Contact us to confirm price and availability.",
-
+        description: "Small native chalk.",
         price: null,
         image: "/products/native-chalk-small.jpg",
       },
-
+      {
+        name: "Native Chalk — Large",
+        description: "Large native chalk.",
+        price: null,
+        image: "/products/native-chalk-large.jpg",
+      },
       {
         name: "Love Spiritual Powders",
-        description:
-          "Contact us for details about available spiritual powders.",
-
+        description: "Ask about availability and prices.",
         price: null,
         image: "/products/love-spiritual-powders.jpg",
       },
-
       {
         name: "Other Spiritual Powders",
-        description:
-          "Ask us about other available traditional and spiritual powders.",
-
+        description: "Enquire about other available varieties.",
         price: null,
         image: "/products/other-spiritual-powders.jpg",
       },
     ],
   },
-
-  /* -------------------------------------------------------
-     3. INCENSE AND SOAPS
-  ------------------------------------------------------- */
-
   {
     name: "Incense & Soaps",
-
     description:
-      "Explore available soaps, incense and related traditional products.",
-
+      "Browse traditional incense and soaps for cultural and ceremonial use.",
     products: [
       {
         name: "Joy Soap",
-        description:
-          "Contact us for product details, price and availability.",
-
+        description: "Traditional soap product.",
         price: null,
         image: "/products/joy-soap.jpg",
       },
-
       {
         name: "Morning Dew Soap",
-        description:
-          "Contact us for product details, price and availability.",
-
+        description: "Traditional soap product.",
         price: null,
         image: "/products/morning-dew-soap.jpg",
       },
-
       {
         name: "Traditional & Spiritual Incense",
-        description:
-          "Ask us about the available incense products in our shop.",
-
+        description: "Enquire about available incense products.",
         price: null,
         image: "/products/spiritual-incense.jpg",
       },
-
       {
         name: "Other Soaps",
-        description:
-          "Contact us to enquire about other available soaps.",
-
+        description: "Ask about other available soaps.",
         price: null,
         image: "/products/other-soaps.jpg",
       },
     ],
   },
-
-  /* -------------------------------------------------------
-     4. SPIRITUAL WORK ITEMS
-  ------------------------------------------------------- */
-
   {
     name: "Spiritual Work Items",
-
     description:
-      "A selection of traditional items. Contact us for product information and availability.",
-
+      "Explore traditional materials and cultural items available from our shop.",
     products: [
       {
         name: "Kola Nuts",
-        description:
-          "Contact us to enquire about Kola Nuts, prices and availability.",
-
+        description: "Traditional kola nuts.",
         price: null,
         image: "/products/kola-nuts.jpg",
       },
-
       {
         name: "Camwood",
-        description:
-          "Contact us for information about available Camwood products.",
-
+        description: "Traditional camwood.",
         price: null,
         image: "/products/camwood.jpg",
       },
-
       {
         name: "Herbs",
-        description:
-          "Ask us about available traditional herbs and product details.",
-
+        description: "Enquire about available traditional herbs.",
         price: null,
         image: "/products/herbs.jpg",
       },
-
       {
         name: "Thunder Stone",
-        description:
-          "Contact us for product details and availability.",
-
+        description: "Ask about availability and product details.",
         price: null,
         image: "/products/thunder-stone.jpg",
       },
-
       {
         name: "Alligator Pepper",
-        description:
-          "Contact us to enquire about Alligator Pepper.",
-
+        description: "Traditional alligator pepper.",
         price: null,
         image: "/products/alligator-pepper.jpg",
       },
-
+      {
+        name: "Sea Shells",
+        description: "Traditional shells and cultural materials.",
+        price: null,
+        image: "/products/sea-shells.jpg",
+      },
+      {
+        name: "Cowries",
+        description: "Traditional cowrie shells.",
+        price: null,
+        image: "/products/cowries.jpg",
+      },
       {
         name: "Other Spiritual Work Items",
-        description:
-          "Ask us about other traditional and spiritual items available.",
-
+        description: "Enquire about other available items.",
         price: null,
         image: "/products/other-spiritual-work-items.jpg",
       },
     ],
   },
-
-  /* -------------------------------------------------------
-     5. TRADITIONAL UTENSILS AND CONTAINERS
-  ------------------------------------------------------- */
-
   {
     name: "Traditional Utensils & Containers",
-
     description:
-      "Traditional utensils and containers available in different sizes. Contact us for prices.",
-
+      "Browse traditional utensils and containers with separate listings for each size.",
     products: [
       {
         name: "White Basin — Small",
-        description:
-          "Small White Basin. Contact us for price and availability.",
-
+        description: "Small white basin.",
         price: null,
         image: "/products/white-basin-small.jpg",
       },
-
       {
         name: "White Basin — Medium",
-        description:
-          "Medium White Basin. Contact us for price and availability.",
-
+        description: "Medium white basin.",
         price: null,
         image: "/products/white-basin-medium.jpg",
       },
-
       {
         name: "White Basin — Large",
-        description:
-          "Large White Basin. Contact us for price and availability.",
-
+        description: "Large white basin.",
         price: null,
         image: "/products/white-basin-large.jpg",
       },
-
       {
         name: "Native Pot — Small",
-        description:
-          "Small Native Pot. Contact us for price and availability.",
-
+        description: "Small traditional pot.",
         price: null,
         image: "/products/native-pot-small.jpg",
       },
-
       {
         name: "Native Pot — Medium",
-        description:
-          "Medium Native Pot. Contact us for price and availability.",
-
+        description: "Medium traditional pot.",
         price: null,
         image: "/products/native-pot-medium.jpg",
       },
-
       {
         name: "Native Pot — Large",
-        description:
-          "Large Native Pot. Contact us for price and availability.",
-
+        description: "Large traditional pot.",
         price: null,
         image: "/products/native-pot-large.jpg",
       },
-
       {
         name: "Mortar and Pestle — Small",
-        description:
-          "Small Mortar and Pestle. Contact us for price and availability.",
-
+        description: "Small mortar and pestle.",
         price: null,
         image: "/products/mortar-and-pestle-small.jpg",
       },
-
       {
         name: "Mortar and Pestle — Medium",
-        description:
-          "Medium Mortar and Pestle. Contact us for price and availability.",
-
+        description: "Medium mortar and pestle.",
         price: null,
         image: "/products/mortar-and-pestle-medium.jpg",
       },
-
       {
         name: "Mortar and Pestle — Large",
-        description:
-          "Large Mortar and Pestle. Contact us for price and availability.",
-
+        description: "Large mortar and pestle.",
         price: null,
         image: "/products/mortar-and-pestle-large.jpg",
       },
@@ -385,11 +239,12 @@ const productCategories: ProductCategory[] = [
   },
 ];
 
-/* =========================================================
-   PRICE FORMATTER
-========================================================= */
+const categoryNames = [
+  "All Products",
+  ...categories.map((category) => category.name),
+];
 
-function formatPrice(price: number) {
+function formatPrice(price: number): string {
   return new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
@@ -397,63 +252,34 @@ function formatPrice(price: number) {
   }).format(price);
 }
 
-/* =========================================================
-   PRODUCT IMAGE
-========================================================= */
-
-function ProductImage({ product }: { product: Product }) {
+function ProductCard({ product }: { product: Product }) {
   const [imageFailed, setImageFailed] = useState(false);
 
-  return (
-    <div className="relative flex h-56 items-center justify-center overflow-hidden bg-amber-50">
-      {product.image && !imageFailed ? (
-        <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain p-4"
-          onError={() => setImageFailed(true)}
-        />
-      ) : (
-        <div className="flex h-full w-full flex-col items-center justify-center px-5 text-center">
-          <span className="text-5xl" aria-hidden="true">
-            📦
-          </span>
-
-          <p className="mt-3 font-semibold text-amber-900">
-            Product photo coming soon
-          </p>
-
-          <p className="mt-1 text-xs text-amber-800/70">
-            {product.name}
-          </p>
-        </div>
-      )}
-    </div>
+  const message = encodeURIComponent(
+    `Hello White Queen Spirituals! I would like to enquire about ${product.name}. Please let me know the price and availability.`,
   );
-}
-
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
-
-function ProductCard({ product }: { product: Product }) {
-  const message =
-    `Hello White Queen Spirituals — Temple of the Queen Mother. ` +
-    `I am interested in purchasing ${product.name}. ` +
-    `Please let me know the price and availability. Thank you.`;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-amber-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      {/* Product photograph */}
-
-      <ProductImage product={product} />
-
-      {/* Product information */}
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-purple-100 bg-white transition duration-300 hover:-translate-y-1 hover:border-purple-300 hover:shadow-xl">
+      <div className="relative h-56 overflow-hidden bg-purple-50">
+        {!imageFailed ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center px-4 text-center text-sm text-purple-700">
+            Product photo coming soon
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-bold text-amber-950">
+        <h3 className="text-lg font-bold text-purple-950">
           {product.name}
         </h3>
 
@@ -461,206 +287,240 @@ function ProductCard({ product }: { product: Product }) {
           {product.description}
         </p>
 
-        <div className="mt-5 border-t border-amber-100 pt-4">
-          {product.price !== null ? (
-            <p className="text-lg font-extrabold text-amber-800">
-              {formatPrice(product.price)}
-            </p>
-          ) : (
-            <p className="text-sm font-semibold text-amber-800">
-              Contact us for price and availability.
-            </p>
-          )}
+        <div className="mt-5 border-t border-purple-100 pt-4">
+          <p className="font-bold text-purple-800">
+            {product.price === null
+              ? "Contact for price"
+              : formatPrice(product.price)}
+          </p>
 
-          {/* WhatsApp order button */}
-
-          <WhatsAppButton
-            message={message}
-            className="mt-4 w-full"
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex min-h-11 w-full items-center justify-center rounded-xl bg-purple-800 px-4 py-3 text-sm font-semibold text-white transition hover:bg-purple-950"
           >
-            Order on WhatsApp
-          </WhatsAppButton>
+            Enquire on WhatsApp
+          </a>
         </div>
       </div>
     </article>
   );
 }
 
-/* =========================================================
-   SHOP PAGE
-========================================================= */
-
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] =
+    useState("All Products");
 
   const filteredCategories = useMemo(() => {
-    const search = searchTerm.trim().toLowerCase();
+    const query = searchTerm.trim().toLowerCase();
 
-    if (!search) {
-      return productCategories;
-    }
-
-    return productCategories
-      .map((category) => {
-        const categoryMatches = category.name
-          .toLowerCase()
-          .includes(search);
-
-        const descriptionMatches = category.description
-          .toLowerCase()
-          .includes(search);
-
-        const filteredProducts = category.products.filter((product) => {
-          return (
-            product.name.toLowerCase().includes(search) ||
-            product.description.toLowerCase().includes(search)
-          );
-        });
-
-        if (categoryMatches || descriptionMatches) {
-          return category;
-        }
-
-        return {
-          ...category,
-          products: filteredProducts,
-        };
-      })
+    return categories
+      .filter(
+        (category) =>
+          selectedCategory === "All Products" ||
+          category.name === selectedCategory,
+      )
+      .map((category) => ({
+        ...category,
+        products: category.products.filter(
+          (product) =>
+            product.name.toLowerCase().includes(query) ||
+            product.description.toLowerCase().includes(query) ||
+            category.name.toLowerCase().includes(query),
+        ),
+      }))
       .filter((category) => category.products.length > 0);
-  }, [searchTerm]);
+  }, [searchTerm, selectedCategory]);
 
-  const totalProducts = productCategories.reduce(
+  const totalProducts = filteredCategories.reduce(
     (total, category) => total + category.products.length,
-    0
+    0,
   );
 
-  const whatsappIntroduction =
-    "Hello White Queen Spirituals — Temple of the Queen Mother. " +
-    "I would like to enquire about your products and services. " +
-    "Please assist me with information about prices and availability. Thank you.";
+  const contactMessage = encodeURIComponent(
+    "Hello White Queen Spirituals! I would like to enquire about your products.",
+  );
 
   return (
-    <main className="min-h-screen bg-amber-50/40">
-      {/* =====================================================
-          HERO / BUSINESS INTRODUCTION
-      ====================================================== */}
+    <div className="w-full flex-grow bg-white text-gray-800">
+      {/* Shop announcement */}
+      <div className="bg-purple-950 px-4 py-3 text-center text-sm text-white">
+        <span className="font-medium">
+          Welcome to White Queen Spirituals
+        </span>
+        <span className="mx-2 text-yellow-400">✦</span>
+        <span className="text-purple-100">
+          Temple of the Queen Mother
+        </span>
+      </div>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-950 via-amber-900 to-yellow-800 text-white">
-        {/* Decorative background elements */}
+      {/* Shop identity */}
+      <section className="border-b border-purple-100 bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-6 sm:flex-row">
+          <div className="text-center sm:text-left">
+            <h1 className="text-2xl font-extrabold tracking-tight text-purple-950 sm:text-3xl">
+              White Queen{" "}
+              <span className="text-yellow-600">Spirituals</span>
+            </h1>
 
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
-
-        <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-amber-300/10 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 text-center md:px-10 md:py-28">
-          {/* Brand name must appear first */}
-
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-yellow-300 md:text-base">
-            White Queen Spirituals
-          </p>
-
-          <h1 className="text-4xl font-black leading-tight tracking-tight md:text-6xl">
-            White Queen Spirituals
-          </h1>
-
-          {/* Tagline immediately below brand */}
-
-          <p className="mt-4 text-xl font-semibold text-amber-100 md:text-3xl">
-            Temple of the Queen Mother
-          </p>
-
-          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-yellow-400" />
-
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/90 md:text-lg">
-            Welcome to White Queen Spirituals — Temple of the Queen
-            Mother. Explore our selection of traditional, cultural,
-            ceremonial and spiritual products. Contact us directly
-            for product information, prices and availability.
-          </p>
-
-          {/* Business address */}
-
-          <div className="mx-auto mt-7 max-w-2xl rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-            <p className="text-sm font-bold uppercase tracking-wider text-yellow-300">
-              Visit Our Location
-            </p>
-
-            <p className="mt-2 leading-7 text-white">
-              Swali Market Road Junction, Yenagoa,
-              Bayelsa State, Nigeria
-            </p>
-
-            <p className="mt-2 text-sm text-white/80">
-              WhatsApp: 08169117532
+            <p className="mt-1 text-sm text-gray-500">
+              Temple of the Queen Mother
             </p>
           </div>
 
-          {/* Main WhatsApp contact button */}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-purple-800 px-6 py-3 text-sm font-semibold text-purple-900 transition hover:bg-purple-800 hover:text-white"
+          >
+            Contact Our Shop
+          </a>
+        </div>
+      </section>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <WhatsAppButton
-              message={whatsappIntroduction}
-              className="min-w-64 rounded-full px-7 py-4 text-base shadow-lg"
-            >
-              Chat with Us on WhatsApp
-            </WhatsAppButton>
+      {/* Hero */}
+      <section className="overflow-hidden bg-purple-50">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-yellow-700">
+              Welcome to Our Store
+            </p>
+
+            <h2 className="mt-4 text-4xl font-extrabold leading-tight text-purple-950 sm:text-5xl lg:text-6xl">
+              Tradition Meets
+              <span className="block text-purple-700">
+                Modern Shopping
+              </span>
+            </h2>
+
+            <p className="mt-5 max-w-xl leading-8 text-gray-600">
+              Discover traditional, cultural, ceremonial, and spiritual
+              items from White Queen Spirituals. Browse our catalogue
+              and contact us to confirm prices and availability.
+            </p>
 
             <a
-              href="#products"
-              className="inline-flex min-w-48 items-center justify-center rounded-full border border-white/40 px-7 py-4 font-bold text-white transition hover:bg-white/10"
+              href="#catalogue"
+              className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-purple-800 px-7 py-3 font-bold text-white shadow-md transition hover:bg-purple-950"
             >
-              Explore Our Products
+              Explore the Catalogue
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-purple-100 bg-white p-8 shadow-xl sm:p-12">
+            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-purple-100 text-5xl">
+              👑
+            </div>
+
+            <h3 className="mt-6 text-center text-2xl font-extrabold text-purple-950">
+              The Queen Mother
+            </h3>
+
+            <p className="mt-3 text-center leading-7 text-gray-600">
+              A welcoming destination for traditional products and
+              cultural heritage.
+            </p>
+
+            <div className="mt-7 grid grid-cols-2 gap-3">
+              <div className="rounded-xl bg-purple-50 p-4 text-center">
+                <p className="text-2xl font-extrabold text-purple-800">
+                  5
+                </p>
+                <p className="mt-1 text-xs text-gray-600">
+                  Product Categories
+                </p>
+              </div>
+
+              <div className="rounded-xl bg-yellow-50 p-4 text-center">
+                <p className="text-2xl font-extrabold text-yellow-700">
+                  30+
+                </p>
+                <p className="mt-1 text-xs text-gray-600">
+                  Product Listings
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Shop information */}
+      <section className="mx-auto grid max-w-7xl gap-4 px-5 py-8 md:grid-cols-2">
+        <div className="flex items-start gap-4 rounded-2xl border border-gray-100 p-5">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-2xl">
+            📍
+          </div>
+
+          <div>
+            <h3 className="font-bold text-purple-950">
+              Visit Our Shop
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-gray-600">
+              {SHOP_LOCATION}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-4 rounded-2xl border border-gray-100 p-5">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-100 text-2xl">
+            💬
+          </div>
+
+          <div>
+            <h3 className="font-bold text-purple-950">
+              Contact & Enquiries
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-gray-600">
+              WhatsApp: 08169117532
+            </p>
+
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-sm font-bold text-purple-800 hover:text-yellow-700"
+            >
+              Chat with us →
             </a>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          PRODUCT CATALOGUE INTRODUCTION
-      ====================================================== */}
-
+      {/* Catalogue */}
       <section
-        id="products"
-        className="mx-auto max-w-7xl scroll-mt-6 px-6 py-14 md:px-10 md:py-20"
+        id="catalogue"
+        className="mx-auto max-w-7xl scroll-mt-6 px-5 py-12 sm:py-16"
       >
-        <div className="mb-10 text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-amber-700">
-            Our Collection
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-700">
+            Discover Our Collection
           </p>
 
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-amber-950 md:text-5xl">
-            Explore Our Products
+          <h2 className="mt-3 text-3xl font-extrabold text-purple-950 sm:text-4xl">
+            Shop Our Products
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-600">
-            Browse our product categories and contact us on WhatsApp
-            to ask questions, confirm availability and enquire about
-            prices.
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-gray-600">
+            Find the items you need, explore our categories, and contact
+            us directly for pricing and availability.
           </p>
-
-          <div className="mt-5 inline-flex rounded-full bg-amber-100 px-4 py-2 text-sm font-bold text-amber-900">
-            {totalProducts} listed products
-          </div>
         </div>
 
-        {/* =====================================================
-            PRODUCT SEARCH
-        ====================================================== */}
-
-        <div className="mx-auto mb-12 max-w-2xl">
+        {/* Search */}
+        <div className="mx-auto mt-8 max-w-2xl">
           <label
             htmlFor="product-search"
-            className="mb-3 block text-sm font-bold text-amber-950"
+            className="mb-2 block text-sm font-semibold text-purple-950"
           >
-            Search our catalogue
+            Search the catalogue
           </label>
 
-          <div className="relative">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xl"
-            >
-              🔎
+          <div className="flex items-center gap-3 rounded-2xl border border-purple-200 bg-white px-4 py-2 shadow-sm focus-within:border-purple-700 focus-within:ring-2 focus-within:ring-purple-100">
+            <span aria-hidden="true" className="text-xl">
+              🔍
             </span>
 
             <input
@@ -668,46 +528,69 @@ export default function ShopPage() {
               type="search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search for Kola Nuts, Native Chalk, Perfume..."
-              className="w-full rounded-2xl border border-amber-200 bg-white py-4 pl-12 pr-5 text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+              placeholder="Search perfumes, chalk, soaps, pots..."
+              className="min-h-11 w-full bg-transparent py-2 text-sm outline-none placeholder:text-gray-400"
             />
           </div>
+        </div>
 
-          {searchTerm && (
+        {/* Category filters */}
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          {categoryNames.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
+                selectedCategory === category
+                  ? "border-purple-800 bg-purple-800 text-white shadow-md"
+                  : "border-purple-200 bg-white text-purple-900 hover:border-purple-700 hover:bg-purple-50"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <div className="mb-8 mt-8 flex items-center justify-between gap-4 border-b border-gray-100 pb-4">
+          <p className="text-sm text-gray-600">
+            Showing{" "}
+            <span className="font-bold text-purple-900">
+              {totalProducts}
+            </span>{" "}
+            {totalProducts === 1 ? "product" : "products"}
+          </p>
+
+          {(searchTerm || selectedCategory !== "All Products") && (
             <button
               type="button"
-              onClick={() => setSearchTerm("")}
-              className="mt-3 text-sm font-bold text-amber-800 underline underline-offset-4 hover:text-amber-950"
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedCategory("All Products");
+              }}
+              className="text-sm font-semibold text-purple-800 hover:text-yellow-700"
             >
-              Clear search
+              Clear filters
             </button>
           )}
         </div>
 
-        {/* =====================================================
-            PRODUCT CATEGORY SECTIONS
-        ====================================================== */}
-
         {filteredCategories.length > 0 ? (
-          <div className="space-y-16">
+          <div className="space-y-14">
             {filteredCategories.map((category) => (
-              <section
-                key={category.name}
-                aria-label={category.name}
-              >
-                {/* Category heading */}
+              <section key={category.name}>
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="h-8 w-1.5 rounded-full bg-yellow-500" />
 
-                <div className="mb-7 border-l-4 border-amber-600 pl-5">
-                  <h2 className="text-2xl font-black text-amber-950 md:text-3xl">
-                    {category.name}
-                  </h2>
-
-                  <p className="mt-2 max-w-3xl leading-7 text-gray-600">
-                    {category.description}
-                  </p>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-purple-950">
+                      {category.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {category.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Products */}
 
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {category.products.map((product) => (
@@ -721,23 +604,22 @@ export default function ShopPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-amber-100 bg-white px-6 py-14 text-center shadow-sm">
-            <span className="text-5xl" aria-hidden="true">
-              🔎
-            </span>
-
-            <h3 className="mt-4 text-xl font-bold text-amber-950">
+          <div className="rounded-2xl border border-purple-100 bg-purple-50 px-5 py-16 text-center">
+            <h3 className="text-xl font-bold text-purple-950">
               No products found
             </h3>
 
-            <p className="mt-2 text-gray-600">
-              Try another product name or search term.
+            <p className="mt-3 text-gray-600">
+              Try another search or select a different category.
             </p>
 
             <button
               type="button"
-              onClick={() => setSearchTerm("")}
-              className="mt-5 rounded-xl bg-amber-800 px-5 py-3 font-bold text-white transition hover:bg-amber-900"
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedCategory("All Products");
+              }}
+              className="mt-5 rounded-xl bg-purple-800 px-6 py-3 font-semibold text-white hover:bg-purple-950"
             >
               Show All Products
             </button>
@@ -745,78 +627,30 @@ export default function ShopPage() {
         )}
       </section>
 
-      {/* =====================================================
-          WHATSAPP CONTACT SECTION
-      ====================================================== */}
+      {/* Contact banner — the shared Footer remains in app/layout.tsx */}
+      <section className="bg-purple-950 px-5 py-14 text-center text-white sm:py-16">
+        <p className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-400">
+          We Are Here to Help
+        </p>
 
-      <section className="px-6 pb-16 md:px-10 md:pb-20">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-green-50 shadow-sm ring-1 ring-green-200">
-          <div className="grid gap-6 p-7 md:grid-cols-[1fr_auto] md:items-center md:p-10">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-green-700">
-                We Are Here to Help
-              </p>
+        <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+          Looking for Something Special?
+        </h2>
 
-              <h2 className="mt-3 text-2xl font-black text-green-950 md:text-3xl">
-                Need Help Choosing a Product?
-              </h2>
+        <p className="mx-auto mt-4 max-w-2xl leading-7 text-purple-100">
+          Contact White Queen Spirituals to enquire about products,
+          prices, sizes, and availability.
+        </p>
 
-              <p className="mt-4 max-w-2xl leading-7 text-green-900/80">
-                Contact White Queen Spirituals directly on WhatsApp
-                to ask about our products, sizes, prices and
-                availability.
-              </p>
-
-              <p className="mt-3 font-semibold text-green-900">
-                WhatsApp: 08169117532
-              </p>
-            </div>
-
-            <WhatsAppButton
-              message={whatsappIntroduction}
-              className="w-full md:w-auto"
-            >
-              Message Us Now
-            </WhatsAppButton>
-          </div>
-        </div>
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-yellow-400 px-8 py-3 font-bold text-purple-950 transition hover:bg-yellow-300"
+        >
+          Enquire on WhatsApp
+        </a>
       </section>
-
-      {/* =====================================================
-          FOOTER
-      ====================================================== */}
-
-      <footer className="border-t border-amber-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-10 text-center md:px-10">
-          <h2 className="text-xl font-black text-amber-950">
-            White Queen Spirituals
-          </h2>
-
-          <p className="mt-2 font-semibold text-amber-800">
-            Temple of the Queen Mother
-          </p>
-
-          <p className="mt-4 text-sm leading-6 text-gray-600">
-            Swali Market Road Junction, Yenagoa,
-            Bayelsa State, Nigeria
-          </p>
-
-          <p className="mt-2 text-sm text-gray-600">
-            WhatsApp: 08169117532
-          </p>
-
-          <div className="mt-6">
-            <WhatsAppButton message={whatsappIntroduction}>
-              Contact Us on WhatsApp
-            </WhatsAppButton>
-          </div>
-
-          <p className="mt-8 text-xs text-gray-500">
-            © {new Date().getFullYear()} White Queen Spirituals.
-            All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </main>
+    </div>
   );
 }
