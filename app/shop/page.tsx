@@ -71,323 +71,6 @@ const productCategories: ProductCategory[] = [
      1. OILS AND PERFUMES
   ------------------------------------------------------- */
 
-  {
-    name: "Oils & Perfumes",
-
-    description:
-      "Explore our traditional and spiritual oils and perfumes. Contact us for prices and availability.",
-
-    products: [
-      {
-        name: "St. Michael Perfume",
-        description:
-          "A spiritual perfume available for customer enquiries.",
-
-        price: null,
-        image: "/products/st-michael-perfume.jpg",
-      },
-
-      {
-        name: "Love Perfume",
-        description:
-          "A spiritual perfume. Contact us for product details and availability.",
-
-        price: null,
-        image: "/products/love-perfume.jpg",
-      },
-
-      {
-        name: "Back to Sender Perfume",
-        description:
-          "A spiritual perfume available for customer enquiries.",
-
-        price: null,
-        image: "/products/back-to-sender-perfume.jpg",
-      },
-
-      {
-        name: "Other Spiritual Perfumes",
-        description:
-          "Ask us about other spiritual perfumes available in our shop.",
-
-        price: null,
-        image: "/products/other-spiritual-perfumes.jpg",
-      },
-
-      {
-        name: "Spiritual Oils",
-        description:
-          "Contact us to enquire about our available spiritual oils.",
-
-        price: null,
-        image: "/products/spiritual-oils.jpg",
-      },
-    ],
-  },
-
-  /* -------------------------------------------------------
-     2. SPIRITUAL POWDERS
-  ------------------------------------------------------- */
-
-  {
-    name: "Spiritual Powders",
-
-    description:
-      "Browse Native Chalk and other traditional powders. Different sizes are listed separately.",
-
-    products: [
-      {
-        name: "Native Chalk — Large",
-        description:
-          "Large Native Chalk. Contact us to confirm price and availability.",
-
-        price: null,
-        image: "/products/native-chalk-large.jpg",
-      },
-
-      {
-        name: "Native Chalk — Small",
-        description:
-          "Small Native Chalk. Contact us to confirm price and availability.",
-
-        price: null,
-        image: "/products/native-chalk-small.jpg",
-      },
-
-      {
-        name: "Love Spiritual Powders",
-        description:
-          "Contact us for details about available spiritual powders.",
-
-        price: null,
-        image: "/products/love-spiritual-powders.jpg",
-      },
-
-      {
-        name: "Other Spiritual Powders",
-        description:
-          "Ask us about other available traditional and spiritual powders.",
-
-        price: null,
-        image: "/products/other-spiritual-powders.jpg",
-      },
-    ],
-  },
-
-  /* -------------------------------------------------------
-     3. INCENSE AND SOAPS
-  ------------------------------------------------------- */
-
-  {
-    name: "Incense & Soaps",
-
-    description:
-      "Explore available soaps, incense and related traditional products.",
-
-    products: [
-      {
-        name: "Joy Soap",
-        description:
-          "Contact us for product details, price and availability.",
-
-        price: null,
-        image: "/products/joy-soap.jpg",
-      },
-
-      {
-        name: "Morning Dew Soap",
-        description:
-          "Contact us for product details, price and availability.",
-
-        price: null,
-        image: "/products/morning-dew-soap.jpg",
-      },
-
-      {
-        name: "Traditional & Spiritual Incense",
-        description:
-          "Ask us about the available incense products in our shop.",
-
-        price: null,
-        image: "/products/spiritual-incense.jpg",
-      },
-
-      {
-        name: "Other Soaps",
-        description:
-          "Contact us to enquire about other available soaps.",
-
-        price: null,
-        image: "/products/other-soaps.jpg",
-      },
-    ],
-  },
-
-  /* -------------------------------------------------------
-     4. SPIRITUAL WORK ITEMS
-  ------------------------------------------------------- */
-
-  {
-    name: "Spiritual Work Items",
-
-    description:
-      "A selection of traditional items. Contact us for product information and availability.",
-
-    products: [
-      {
-        name: "Kola Nuts",
-        description:
-          "Contact us to enquire about Kola Nuts, prices and availability.",
-
-        price: null,
-        image: "/products/kola-nuts.jpg",
-      },
-
-      {
-        name: "Camwood",
-        description:
-          "Contact us for information about available Camwood products.",
-
-        price: null,
-        image: "/products/camwood.jpg",
-      },
-
-      {
-        name: "Herbs",
-        description:
-          "Ask us about available traditional herbs and product details.",
-
-        price: null,
-        image: "/products/herbs.jpg",
-      },
-
-      {
-        name: "Thunder Stone",
-        description:
-          "Contact us for product details and availability.",
-
-        price: null,
-        image: "/products/thunder-stone.jpg",
-      },
-
-      {
-        name: "Alligator Pepper",
-        description:
-          "Contact us to enquire about Alligator Pepper.",
-
-        price: null,
-        image: "/products/alligator-pepper.jpg",
-      },
-
-      {
-        name: "Other Spiritual Work Items",
-        description:
-          "Ask us about other traditional and spiritual items available.",
-
-        price: null,
-        image: "/products/other-spiritual-work-items.jpg",
-      },
-    ],
-  },
-
-  /* -------------------------------------------------------
-     5. TRADITIONAL UTENSILS AND CONTAINERS
-  ------------------------------------------------------- */
-
-  {
-    name: "Traditional Utensils & Containers",
-
-    description:
-      "Traditional utensils and containers available in different sizes. Contact us for prices.",
-
-    products: [
-      {
-        name: "White Basin — Small",
-        description:
-          "Small White Basin. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/white-basin-small.jpg",
-      },
-
-      {
-        name: "White Basin — Medium",
-        description:
-          "Medium White Basin. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/white-basin-medium.jpg",
-      },
-
-      {
-        name: "White Basin — Large",
-        description:
-          "Large White Basin. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/white-basin-large.jpg",
-      },
-
-      {
-        name: "Native Pot — Small",
-        description:
-          "Small Native Pot. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/native-pot-small.jpg",
-      },
-
-      {
-        name: "Native Pot — Medium",
-        description:
-          "Medium Native Pot. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/native-pot-medium.jpg",
-      },
-
-      {
-        name: "Native Pot — Large",
-        description:
-          "Large Native Pot. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/native-pot-large.jpg",
-      },
-
-      {
-        name: "Mortar and Pestle — Small",
-        description:
-          "Small Mortar and Pestle. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/mortar-and-pestle-small.jpg",
-      },
-
-      {
-        name: "Mortar and Pestle — Medium",
-        description:
-          "Medium Mortar and Pestle. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/mortar-and-pestle-medium.jpg",
-      },
-
-      {
-        name: "Mortar and Pestle — Large",
-        description:
-          "Large Mortar and Pestle. Contact us for price and availability.",
-
-        price: null,
-        image: "/products/mortar-and-pestle-large.jpg",
-      },
-    ],
-  },
-];
-
-/* =========================================================
-   PRICE FORMATTER
-========================================================= */
 
 function formatPrice(price: number) {
   return new Intl.NumberFormat("en-NG", {
@@ -399,7 +82,6 @@ function formatPrice(price: number) {
 
 /* =========================================================
    PRODUCT IMAGE
-========================================================= */
 
 function ProductImage({ product }: { product: Product }) {
   const [imageFailed, setImageFailed] = useState(false);
@@ -436,7 +118,6 @@ function ProductImage({ product }: { product: Product }) {
 
 /* =========================================================
    PRODUCT CARD
-========================================================= */
 
 function ProductCard({ product }: { product: Product }) {
   const message =
@@ -488,50 +169,27 @@ function ProductCard({ product }: { product: Product }) {
 
 /* =========================================================
    SHOP PAGE
-========================================================= */
 
 export default function ShopPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCategories = useMemo(() => {
-    const search = searchTerm.trim().toLowerCase();
+  const products = [
+    "Native Chalk",
+    "Spiritual Perfume",
+    "St. Michael Perfume",
+    "Love Perfume",
+    "Back to Sender Perfume",
+    "White Basin - Large",
+    "White Basin - Medium",
+    "White Basin - Small",
+    "Thunder Stone",
+    "Alligator Pepper",
+    "Native Pot",
+    "Mortar and Pestle",
+  ];
 
-    if (!search) {
-      return productCategories;
-    }
-
-    return productCategories
-      .map((category) => {
-        const categoryMatches = category.name
-          .toLowerCase()
-          .includes(search);
-
-        const descriptionMatches = category.description
-          .toLowerCase()
-          .includes(search);
-
-        const filteredProducts = category.products.filter((product) => {
-          return (
-            product.name.toLowerCase().includes(search) ||
-            product.description.toLowerCase().includes(search)
-          );
-        });
-
-        if (categoryMatches || descriptionMatches) {
-          return category;
-        }
-
-        return {
-          ...category,
-          products: filteredProducts,
-        };
-      })
-      .filter((category) => category.products.length > 0);
-  }, [searchTerm]);
-
-  const totalProducts = productCategories.reduce(
-    (total, category) => total + category.products.length,
-    0
+  const filteredProducts = products.filter((product) =>
+    product.toLowerCase().includes(search.toLowerCase())
   );
 
   const whatsappIntroduction =
@@ -540,84 +198,32 @@ export default function ShopPage() {
     "Please assist me with information about prices and availability. Thank you.";
 
   return (
-    <main className="min-h-screen bg-amber-50/40">
-      {/* =====================================================
-          HERO / BUSINESS INTRODUCTION
-      ====================================================== */}
+            <main className="min-h-screen bg-white px-6 py-16">
+            {/* Shop Introduction */}
+    <section className="mx-auto max-w-6xl">
+        <div className="rounded-3xl border-l-8 border-igbe-pink bg-pink-50 px-6 py-12 text-center shadow-md md:px-12">
+            
+            <h1 className="text-4xl font-bold text-igbe-blue md:text-6xl">
+            Mama White Spiritual
+            </h1>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-950 via-amber-900 to-yellow-800 text-white">
-        {/* Decorative background elements */}
-
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
-
-        <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-amber-300/10 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 text-center md:px-10 md:py-28">
-          {/* Brand name must appear first */}
-
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-yellow-300 md:text-base">
-            White Queen Spirituals
-          </p>
-
-          <h1 className="text-4xl font-black leading-tight tracking-tight md:text-6xl">
-            White Queen Spirituals
-          </h1>
-
-          {/* Tagline immediately below brand */}
-
-          <p className="mt-4 text-xl font-semibold text-amber-100 md:text-3xl">
+            <p className="mt-4 text-sm font-bold uppercase tracking-[0.25em] text-igbe-purple">
             Temple of the Queen Mother
-          </p>
-
-          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-yellow-400" />
-
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/90 md:text-lg">
-            Welcome to White Queen Spirituals — Temple of the Queen
-            Mother. Explore our selection of traditional, cultural,
-            ceremonial and spiritual products. Contact us directly
-            for product information, prices and availability.
-          </p>
-
-          {/* Business address */}
-
-          <div className="mx-auto mt-7 max-w-2xl rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-            <p className="text-sm font-bold uppercase tracking-wider text-yellow-300">
-              Visit Our Location
             </p>
 
-            <p className="mt-2 leading-7 text-white">
-              Swali Market Road Junction, Yenagoa,
-              Bayelsa State, Nigeria
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-semibold leading-8 text-red-600">
+            Traditional, spiritual, and cultural products and services rooted
+            in the heritage of the Queen Mother.
             </p>
 
-            <p className="mt-2 text-sm text-white/80">
-              WhatsApp: 08169117532
-            </p>
-          </div>
-
-          {/* Main WhatsApp contact button */}
-
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <WhatsAppButton
-              message={whatsappIntroduction}
-              className="min-w-64 rounded-full px-7 py-4 text-base shadow-lg"
-            >
-              Chat with Us on WhatsApp
-            </WhatsAppButton>
-
-            <a
-              href="#products"
-              className="inline-flex min-w-48 items-center justify-center rounded-full border border-white/40 px-7 py-4 font-bold text-white transition hover:bg-white/10"
-            >
-              Explore Our Products
-            </a>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* =====================================================
-          PRODUCT CATALOGUE INTRODUCTION
-      ====================================================== */}
+      {/* Location */}
+      <section className="mx-auto mt-12 max-w-4xl rounded-2xl border-l-8 border-igbe-purple bg-purple-50 p-8">
+        <h2 className="text-2xl font-bold text-igbe-purple">
+          Visit Mama White Spiritual
+        </h2>
 
       <section
         id="products"
@@ -632,44 +238,22 @@ export default function ShopPage() {
             Explore Our Products
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-600">
-            Browse our product categories and contact us on WhatsApp
-            to ask questions, confirm availability and enquire about
-            prices.
-          </p>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+          Search for traditional, spiritual, ceremonial, and cultural
+          products available from Mama White Spiritual.
+        </p>
 
-          <div className="mt-5 inline-flex rounded-full bg-amber-100 px-4 py-2 text-sm font-bold text-amber-900">
-            {totalProducts} listed products
-          </div>
-        </div>
-
-        {/* =====================================================
-            PRODUCT SEARCH
-        ====================================================== */}
-
-        <div className="mx-auto mb-12 max-w-2xl">
-          <label
-            htmlFor="product-search"
-            className="mb-3 block text-sm font-bold text-amber-950"
-          >
-            Search our catalogue
-          </label>
-
-          <div className="relative">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xl"
-            >
-              🔎
-            </span>
+        {/* Search Box */}
+        <div className="mx-auto mt-8 max-w-2xl">
+          <div className="flex items-center rounded-full border-2 border-igbe-purple bg-white px-5 py-3 shadow-md">
+            <span className="mr-3 text-2xl">🔍</span>
 
             <input
-              id="product-search"
-              type="search"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search for Kola Nuts, Native Chalk, Perfume..."
-              className="w-full rounded-2xl border border-amber-200 bg-white py-4 pl-12 pr-5 text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+              type="text"
+              placeholder="Search for a product..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full bg-transparent text-lg text-gray-800 outline-none placeholder:text-gray-400"
             />
           </div>
 
@@ -684,64 +268,29 @@ export default function ShopPage() {
           )}
         </div>
 
-        {/* =====================================================
-            PRODUCT CATEGORY SECTIONS
-        ====================================================== */}
-
-        {filteredCategories.length > 0 ? (
-          <div className="space-y-16">
-            {filteredCategories.map((category) => (
-              <section
-                key={category.name}
-                aria-label={category.name}
-              >
-                {/* Category heading */}
-
-                <div className="mb-7 border-l-4 border-amber-600 pl-5">
-                  <h2 className="text-2xl font-black text-amber-950 md:text-3xl">
-                    {category.name}
-                  </h2>
-
-                  <p className="mt-2 max-w-3xl leading-7 text-gray-600">
-                    {category.description}
-                  </p>
-                </div>
-
-                {/* Products */}
-
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {category.products.map((product) => (
-                    <ProductCard
-                      key={product.name}
-                      product={product}
-                    />
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-3xl border border-amber-100 bg-white px-6 py-14 text-center shadow-sm">
-            <span className="text-5xl" aria-hidden="true">
-              🔎
-            </span>
-
-            <h3 className="mt-4 text-xl font-bold text-amber-950">
-              No products found
-            </h3>
-
-            <p className="mt-2 text-gray-600">
-              Try another product name or search term.
-            </p>
-
-            <button
-              type="button"
-              onClick={() => setSearchTerm("")}
-              className="mt-5 rounded-xl bg-amber-800 px-5 py-3 font-bold text-white transition hover:bg-amber-900"
+        {/* Search Results */}
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {filteredProducts.map((product) => (
+            <div
+              key={product}
+              className="rounded-2xl border border-purple-200 bg-purple-50 p-5 shadow-sm"
             >
-              Show All Products
-            </button>
-          </div>
+              <h3 className="text-lg font-bold text-igbe-purple">
+                {product}
+              </h3>
+
+              <p className="mt-2 text-sm text-gray-600">
+                Traditional and spiritual product from Mama White Spiritual.
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* No Results */}
+        {filteredProducts.length === 0 && (
+          <p className="mt-8 text-center text-gray-500">
+            No products found. Try another search.
+          </p>
         )}
       </section>
 

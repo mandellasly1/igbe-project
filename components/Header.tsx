@@ -1,138 +1,131 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
-
-const navigationLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Shop", href: "/shop" },
-  { label: "Communities", href: "/communities" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Events", href: "/events" },
-  { label: "Articles / News", href: "/articles" },
-  { label: "Contact", href: "/contact" },
-];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-igbe-purple text-igbe-white shadow-md">
+    <header className="bg-igbe-purple text-igbe-white shadow-md">
       {/* Top Row */}
-      <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-4 sm:px-6">
-        {/* Logo and Site Name */}
-        <Link
-          href="/"
-          onClick={() => setMenuOpen(false)}
-          className="flex min-w-0 items-center gap-3"
-        >
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        <div className="flex items-center space-x-3">
+          {/* Logo */}
           <Image
             src="/Orhe.PNG"
             alt="Orhe Symbol"
             width={120}
             height={120}
-            className="h-14 w-14 shrink-0 rounded-full border-2 border-yellow-500 object-cover sm:h-20 sm:w-20 sm:border-4"
-            priority
+            className="rounded-full border-4 border-yellow-500 object-cover"
+            loading="eager"
           />
 
-          <h1 className="min-w-0 text-lg font-bold leading-tight text-yellow-500 sm:text-2xl">
+          {/* Site Name */}
+          <h1 className="text-2xl font-bold text-yellow-500">
             Waters of Heaven Temple
           </h1>
-        </Link>
+        </div>
 
         {/* Hamburger Menu */}
-        <div className="relative shrink-0">
+        <div className="relative">
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-lg p-2 text-3xl text-white transition hover:text-igbe-gold focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            aria-label={
-              menuOpen ? "Close navigation menu" : "Open navigation menu"
-            }
+            className="text-3xl text-white hover:text-igbe-gold"
+            aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
-            aria-controls="main-navigation"
           >
-            {menuOpen ? "✕" : "☰"}
+            ☰
           </button>
 
-          {/* Hamburger Dropdown */}
+          {/* Dropdown Menu */}
           {menuOpen && (
-            <nav
-              id="main-navigation"
-              className="absolute right-0 top-full z-50 mt-2 w-60 max-w-[calc(100vw-2rem)] rounded-xl bg-white p-4 shadow-xl"
-            >
-              <div className="flex flex-col gap-1">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-lg px-3 py-3 font-semibold text-igbe-purple transition hover:bg-purple-50 hover:text-igbe-gold"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+            <nav className="absolute right-0 top-12 z-50 w-52 rounded-xl bg-white p-5 shadow-lg">
+              <div className="flex flex-col gap-4">
+                <a
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
+                >
+                  Home
+                </a>
+
+                <a
+                  href="/shop"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
+                >
+                  Shop
+                </a>
+
+                <a
+                  href="/about"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
+                >
+                  About
+                </a>
+
+                <a
+                  href="/events"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
+                >
+                  Events
+                </a>
+
+                <a
+                  href="/contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
+                >
+                  Contact
+                </a>
               </div>
             </nav>
           )}
         </div>
       </div>
 
-      {/* Desktop Navigation — Original Design */}
-      <div className="hidden bg-igbe-white px-4 py-3 lg:block">
-        <nav className="container mx-auto flex items-center justify-center gap-9">
-          <Link
+      {/* Secondary Row */}
+      <div className="bg-igbe-white py-3">
+        <div className="container mx-auto flex justify-center space-x-9">
+          <a
             href="/"
-            className="whitespace-nowrap text-xl font-bold text-blue-600 hover:text-igbe-gold"
+            className="text-xl font-bold text-blue-600 hover:text-igbe-gold"
           >
             Home (Waters of Heaven Temple)
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="/communities"
-            className="whitespace-nowrap text-xl font-bold text-red-600 hover:text-igbe-gold"
+            className="text-xl font-bold text-red-600 hover:text-igbe-gold"
           >
             Communities (Igbe Heritage)
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="/gallery"
-            className="whitespace-nowrap text-xl font-bold text-yellow-500 hover:text-igbe-gold"
+            className="text-xl font-bold text-yellow-500 hover:text-igbe-gold"
           >
             Gallery
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="/events"
-            className="whitespace-nowrap text-xl font-bold text-pink-600 hover:text-igbe-gold"
+            className="text-xl font-bold text-pink-600 hover:text-igbe-gold"
           >
             Events & Ceremonies
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="/articles"
-            className="whitespace-nowrap text-xl font-bold text-purple-700 hover:text-igbe-gold"
+            className="text-xl font-bold text-purple-700 hover:text-igbe-gold"
           >
             Articles / News
-          </Link>
-        </nav>
-      </div>
-
-      {/* Tablet Navigation — Wraps When Necessary */}
-      <div className="hidden bg-igbe-white px-4 py-3 md:block lg:hidden">
-        <nav className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-3">
-          {navigationLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-base font-bold text-igbe-purple transition hover:text-igbe-gold"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+          </a>
+        </div>
       </div>
     </header>
   );
