@@ -1,131 +1,128 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+
+const navigationLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Shop", href: "/shop" },
+  { label: "Communities", href: "/communities" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Events", href: "/events" },
+  { label: "Articles / News", href: "/articles" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   return (
-    <header className="bg-igbe-purple text-igbe-white shadow-md">
-      {/* Top Row */}
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <div className="flex items-center space-x-3">
-          {/* Logo */}
+    <header className="relative z-50 w-full bg-igbe-purple text-igbe-white shadow-md">
+      {/* Top Row: Logo and Title on the Left, Hamburger on the Right */}
+      <div className="container relative mx-auto flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <Link
+          href="/"
+          onClick={closeMenu}
+          className="flex min-w-0 items-center gap-3"
+        >
           <Image
             src="/Orhe.PNG"
-            alt="Orhe Symbol"
+            alt="Waters of Heaven Temple symbol"
             width={120}
             height={120}
-            className="rounded-full border-4 border-yellow-500 object-cover"
-            loading="eager"
+            priority
+            className="h-14 w-14 shrink-0 rounded-full border-2 border-yellow-500 object-cover sm:h-20 sm:w-20 sm:border-4"
           />
 
-          {/* Site Name */}
-          <h1 className="text-2xl font-bold text-yellow-500">
+          <h1 className="min-w-0 text-lg font-bold leading-tight text-yellow-500 sm:text-2xl">
             Waters of Heaven Temple
           </h1>
-        </div>
+        </Link>
 
-        {/* Hamburger Menu */}
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-3xl text-white hover:text-igbe-gold"
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-          >
-            ☰
-          </button>
-
-          {/* Dropdown Menu */}
-          {menuOpen && (
-            <nav className="absolute right-0 top-12 z-50 w-52 rounded-xl bg-white p-5 shadow-lg">
-              <div className="flex flex-col gap-4">
-                <a
-                  href="/"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
-                >
-                  Home
-                </a>
-
-                <a
-                  href="/shop"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
-                >
-                  Shop
-                </a>
-
-                <a
-                  href="/about"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
-                >
-                  About
-                </a>
-
-                <a
-                  href="/events"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
-                >
-                  Events
-                </a>
-
-                <a
-                  href="/contact"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-semibold text-igbe-purple hover:text-igbe-gold"
-                >
-                  Contact
-                </a>
-              </div>
-            </nav>
-          )}
-        </div>
+        {/* Hamburger Button */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          className="shrink-0 rounded-lg p-2 text-3xl text-white transition hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation-menu"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </div>
 
-      {/* Secondary Row */}
-      <div className="bg-igbe-white py-3">
-        <div className="container mx-auto flex justify-center space-x-9">
-          <a
+            {/* Compact Hamburger Dropdown Card */}
+      {menuOpen && (
+        <nav
+          id="main-navigation-menu"
+          aria-label="Main navigation"
+          className="absolute right-4 top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border border-purple-200 bg-white p-3 shadow-xl sm:right-6 sm:w-72"
+        >
+          <div className="flex flex-col gap-1">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="block rounded-lg px-4 py-3 text-sm font-semibold text-purple-800 transition hover:bg-purple-100 hover:text-purple-950 sm:text-base"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
+
+      {/* Existing Lower Desktop Navigation: Preserved */}
+      <div className="hidden bg-igbe-white px-4 py-3 lg:block">
+        <nav
+          aria-label="Desktop navigation"
+          className="container mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
+        >
+          <Link
             href="/"
-            className="text-xl font-bold text-blue-600 hover:text-igbe-gold"
+            className="whitespace-nowrap text-base font-bold text-blue-600 transition hover:text-purple-700 xl:text-lg"
           >
             Home (Waters of Heaven Temple)
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/communities"
-            className="text-xl font-bold text-red-600 hover:text-igbe-gold"
+            className="whitespace-nowrap text-base font-bold text-red-600 transition hover:text-purple-700 xl:text-lg"
           >
             Communities (Igbe Heritage)
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/gallery"
-            className="text-xl font-bold text-yellow-500 hover:text-igbe-gold"
+            className="whitespace-nowrap text-base font-bold text-yellow-600 transition hover:text-purple-700 xl:text-lg"
           >
             Gallery
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/events"
-            className="text-xl font-bold text-pink-600 hover:text-igbe-gold"
+            className="whitespace-nowrap text-base font-bold text-pink-600 transition hover:text-purple-700 xl:text-lg"
           >
             Events & Ceremonies
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/articles"
-            className="text-xl font-bold text-purple-700 hover:text-igbe-gold"
+            className="whitespace-nowrap text-base font-bold text-purple-700 transition hover:text-purple-950 xl:text-lg"
           >
             Articles / News
-          </a>
-        </div>
+          </Link>
+        </nav>
       </div>
     </header>
   );
