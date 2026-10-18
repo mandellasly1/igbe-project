@@ -34,14 +34,11 @@ export default function Home() {
       </section>
 
       {/* Welcome Heading */}
-      <h1 className="text-4xl font-bold text-center mb-10">
-        <span className="text-igbe-red">Welcome</span>{" "}
-        <span className="text-igbe-yellow">to</span>{" "}
-        <span className="text-igbe-blue">Waters</span>{" "}
-        <span className="text-igbe-yellow">of</span>{" "}
-        <span className="text-igbe-red">Heaven</span>{" "}
-        <span className="text-igbe-blue">Temple</span>
-      </h1>
+
+<h1 className="mb-10 text-center text-2xl font-bold text-igbe-blue sm:text-3xl md:text-4xl whitespace-nowrap">
+  Welcome to Waters of Heaven Temple
+</h1>
+
 
       {/* About / Our Origin Section */}
       <section className="py-16 text-center">

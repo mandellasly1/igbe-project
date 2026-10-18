@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 const WHATSAPP_NUMBER = "2348169117532";
 
 const SHOP_LOCATION =
-  "Swali Market Road Junction, Yenagoa, Bayelsa State, Nigeria";
+  "Swali Market Road by Trinity Junction, Yenagoa, Bayelsa State, Nigeria";
 
 type Product = {
   name: string;
@@ -18,6 +18,8 @@ type Product = {
 type Category = {
   name: string;
   description: string;
+  background: string;
+  accent: string;
   products: Product[];
 };
 
@@ -26,6 +28,8 @@ const categories: Category[] = [
     name: "Oils & Perfumes",
     description:
       "Explore our collection of traditional perfumes, fragrances, and spiritual oils.",
+    background: "bg-purple-100",
+    accent: "bg-purple-600",
     products: [
       {
         name: "St. Michael Perfume",
@@ -63,6 +67,8 @@ const categories: Category[] = [
     name: "Spiritual Powders",
     description:
       "Discover traditional chalks and powders in different varieties and sizes.",
+    background: "bg-yellow-100",
+    accent: "bg-yellow-500",
     products: [
       {
         name: "Native Chalk — Small",
@@ -94,6 +100,8 @@ const categories: Category[] = [
     name: "Incense & Soaps",
     description:
       "Browse traditional incense and soaps for cultural and ceremonial use.",
+    background: "bg-pink-100",
+    accent: "bg-pink-500",
     products: [
       {
         name: "Joy Soap",
@@ -125,6 +133,8 @@ const categories: Category[] = [
     name: "Spiritual Work Items",
     description:
       "Explore traditional materials and cultural items available from our shop.",
+    background: "bg-blue-100",
+    accent: "bg-blue-600",
     products: [
       {
         name: "Kola Nuts",
@@ -180,6 +190,8 @@ const categories: Category[] = [
     name: "Traditional Utensils & Containers",
     description:
       "Browse traditional utensils and containers with separate listings for each size.",
+    background: "bg-green-100",
+    accent: "bg-green-600",
     products: [
       {
         name: "White Basin — Small",
@@ -252,6 +264,20 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
+function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M20.52 3.48A11.87 11.87 0 0 0 12.07 0C5.5 0 .15 5.34.15 11.92c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.57 0 11.92-5.35 11.92-11.92a11.85 11.85 0 0 0-3.48-8.44ZM12.08 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.84 9.84 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.93-9.92a9.86 9.86 0 0 1 7.02 2.91 9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.92 9.92Zm5.44-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.77-1.68-2.07-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.5 1.7.64.71.22 1.36.19 1.87.11.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z" />
+    </svg>
+  );
+}
+
 function ProductCard({ product }: { product: Product }) {
   const [imageFailed, setImageFailed] = useState(false);
 
@@ -260,8 +286,8 @@ function ProductCard({ product }: { product: Product }) {
   );
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-purple-100 bg-white transition duration-300 hover:-translate-y-1 hover:border-purple-300 hover:shadow-xl">
-      <div className="relative h-56 overflow-hidden bg-purple-50">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-purple-200 hover:shadow-xl">
+      <div className="relative h-56 overflow-hidden bg-gray-50">
         {!imageFailed ? (
           <Image
             src={product.image}
@@ -272,7 +298,7 @@ function ProductCard({ product }: { product: Product }) {
             onError={() => setImageFailed(true)}
           />
         ) : (
-          <div className="flex h-full items-center justify-center px-4 text-center text-sm text-purple-700">
+          <div className="flex h-full items-center justify-center px-4 text-center text-sm text-gray-500">
             Product photo coming soon
           </div>
         )}
@@ -287,7 +313,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.description}
         </p>
 
-        <div className="mt-5 border-t border-purple-100 pt-4">
+        <div className="mt-5 border-t border-gray-100 pt-4">
           <p className="font-bold text-purple-800">
             {product.price === null
               ? "Contact for price"
@@ -298,9 +324,11 @@ function ProductCard({ product }: { product: Product }) {
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 flex min-h-11 w-full items-center justify-center rounded-xl bg-purple-800 px-4 py-3 text-sm font-semibold text-white transition hover:bg-purple-950"
+            aria-label={`Enquire about ${product.name} on WhatsApp`}
+            className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
-            Enquire on WhatsApp
+            <WhatsAppIcon />
+            <span>Enquire on WhatsApp</span>
           </a>
         </div>
       </div>
@@ -343,6 +371,8 @@ export default function ShopPage() {
     "Hello White Queen Spirituals! I would like to enquire about your products.",
   );
 
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`;
+
   return (
     <div className="w-full flex-grow bg-white text-gray-800">
       {/* Shop announcement */}
@@ -365,17 +395,18 @@ export default function ShopPage() {
               <span className="text-yellow-600">Spirituals</span>
             </h1>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-blue-700">
               Temple of the Queen Mother
             </p>
           </div>
 
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-purple-800 px-6 py-3 text-sm font-semibold text-purple-900 transition hover:bg-purple-800 hover:text-white"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
+            <WhatsAppIcon />
             Contact Our Shop
           </a>
         </div>
@@ -427,30 +458,40 @@ export default function ShopPage() {
             <div className="mt-7 grid grid-cols-2 gap-3">
               <div className="rounded-xl bg-purple-50 p-4 text-center">
                 <p className="text-2xl font-extrabold text-purple-800">
-                  5
+                  {categories.length}
                 </p>
                 <p className="mt-1 text-xs text-gray-600">
                   Product Categories
                 </p>
               </div>
 
-              <div className="rounded-xl bg-yellow-50 p-4 text-center">
-                <p className="text-2xl font-extrabold text-yellow-700">
-                  30+
-                </p>
-                <p className="mt-1 text-xs text-gray-600">
-                  Product Listings
-                </p>
-              </div>
+             
+            <div className="rounded-xl bg-yellow-50 p-4 text-center">
+              <p className="text-2xl font-extrabold text-yellow-700">
+                {categories.reduce(
+                  (total, category) => total + category.products.length,
+                  0,
+                ) >= 30
+                  ? "30+"
+                  : categories.reduce(
+                      (total, category) => total + category.products.length,
+                      0,
+                    )}
+              </p>
+              <p className="mt-1 text-xs text-gray-600">
+                Product Listings
+              </p>
             </div>
+           </div>
           </div>
         </div>
       </section>
 
       {/* Shop information */}
       <section className="mx-auto grid max-w-7xl gap-4 px-5 py-8 md:grid-cols-2">
-        <div className="flex items-start gap-4 rounded-2xl border border-gray-100 p-5">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-2xl">
+        {/* Visit Our Shop — light purple background */}
+        <div className="flex items-start gap-4 rounded-2xl border border-purple-200 bg-purple-100 p-5">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-2xl">
             📍
           </div>
 
@@ -458,31 +499,35 @@ export default function ShopPage() {
             <h3 className="font-bold text-purple-950">
               Visit Our Shop
             </h3>
+
             <p className="mt-2 text-sm leading-6 text-gray-600">
               {SHOP_LOCATION}
             </p>
           </div>
         </div>
 
-        <div className="flex items-start gap-4 rounded-2xl border border-gray-100 p-5">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-100 text-2xl">
-            💬
+        {/* Contact & Enquiries — light green background */}
+        <div className="flex items-start gap-4 rounded-2xl border border-green-200 bg-green-100 p-5">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-green-700">
+            <WhatsAppIcon className="h-7 w-7" />
           </div>
 
           <div>
             <h3 className="font-bold text-purple-950">
               Contact & Enquiries
             </h3>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
+
+            <p className="mt-2 text-sm text-gray-600">
               WhatsApp: 08169117532
             </p>
 
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-sm font-bold text-purple-800 hover:text-yellow-700"
+              className="mt-2 inline-flex items-center gap-2 text-sm font-bold text-green-700 hover:text-green-900"
             >
+              <WhatsAppIcon className="h-4 w-4" />
               Chat with us →
             </a>
           </div>
@@ -552,6 +597,7 @@ export default function ShopPage() {
           ))}
         </div>
 
+        {/* Product count */}
         <div className="mb-8 mt-8 flex items-center justify-between gap-4 border-b border-gray-100 pb-4">
           <p className="text-sm text-gray-600">
             Showing{" "}
@@ -575,18 +621,25 @@ export default function ShopPage() {
           )}
         </div>
 
+        {/* Coloured product categories */}
         {filteredCategories.length > 0 ? (
-          <div className="space-y-14">
+          <div className="space-y-10">
             {filteredCategories.map((category) => (
-              <section key={category.name}>
+              <section
+                key={category.name}
+                className={`rounded-2xl p-5 sm:p-7 ${category.background}`}
+              >
                 <div className="mb-6 flex items-center gap-3">
-                  <div className="h-8 w-1.5 rounded-full bg-yellow-500" />
+                  <div
+                    className={`h-10 w-2 shrink-0 rounded-full ${category.accent}`}
+                  />
 
                   <div>
                     <h3 className="text-2xl font-extrabold text-purple-950">
                       {category.name}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">
+
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
                       {category.description}
                     </p>
                   </div>
@@ -627,9 +680,13 @@ export default function ShopPage() {
         )}
       </section>
 
-      {/* Contact banner — the shared Footer remains in app/layout.tsx */}
-      <section className="bg-purple-950 px-5 py-14 text-center text-white sm:py-16">
-        <p className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-400">
+      {/* Green contact banner */}
+      <section className="bg-purple-900 px-5 py-14 text-center text-white sm:py-16">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white text-green-700">
+          <WhatsAppIcon className="h-9 w-9" />
+        </div>
+
+        <p className="mt-5 text-sm font-bold uppercase tracking-[0.2em] text-green-100">
           We Are Here to Help
         </p>
 
@@ -637,20 +694,22 @@ export default function ShopPage() {
           Looking for Something Special?
         </h2>
 
-        <p className="mx-auto mt-4 max-w-2xl leading-7 text-purple-100">
+        <p className="mx-auto mt-4 max-w-2xl leading-7 text-green-50">
           Contact White Queen Spirituals to enquire about products,
           prices, sizes, and availability.
         </p>
 
         <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`}
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-yellow-400 px-8 py-3 font-bold text-purple-950 transition hover:bg-yellow-300"
+          className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 font-bold text-green-800 transition hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-700"
         >
-          Enquire on WhatsApp
+          <WhatsAppIcon />
+          <span>Enquire on WhatsApp</span>
         </a>
       </section>
     </div>
   );
 }
+
